@@ -7,10 +7,58 @@ body{
     font-family: "Inter", sans-serif;
 }
 
+.titulo{
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #ccc;
+    font-size: 2rem;
+    font-weight: 300;
+    background-image: linear-gradient(to bottom, var(--cor-principal), rgb(230, 88, 88), rgb(156, 35, 35), var(--cor-secundaria));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--cor-principal);
+}
+
+.botao{
+    width: 100%;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 8px 0;
+    border: none;
+    font-weight: 500;
+}
+
+.botao--vermelho{
+    background-color: var(--cor-principal);
+    border: 2px solid var(--cor-principal);
+    color: white;
+    transition: background-color .2s linear;
+}
+
+.botao--vermelho:hover{
+    background-color: var(--cor-secundaria);
+}
+
+.botao--transparente{
+    background-color: transparent;
+    border: 2px solid var(--cor-principal);
+    color: var(--cor-principal);
+    transition: border .2s linear, color .2s linear;
+}
+
+.botao--transparente:hover{
+    border: 2px solid var(--cor-secundaria);
+    color: var(--cor-secundaria);
+}
+
 .cabecalho{
     background-color: var(--cor-principal);
     padding: 2rem 0 0;
     box-shadow: 0 2px 5px rgba(250, 66, 66, 0.7);
+    margin-bottom: 3rem;
 }
 
 .cabecalho__topo{
@@ -107,7 +155,7 @@ body{
 
 .rodape{
     padding: 2rem 0;
-    /* background-color: #e9e9e9; */
+    margin-top: 3rem;
     background: linear-gradient(to bottom, #e9e9e9, #e7e7e7, #e9e8e8);
     border-top: 1px solid #bebcbc;
     box-shadow: 0 -2px 5px rgba(200, 200, 200, 0.4);
