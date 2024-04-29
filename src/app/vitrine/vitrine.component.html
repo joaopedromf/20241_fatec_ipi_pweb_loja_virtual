@@ -1,25 +1,27 @@
-<h1 class="titulo">Vitrine</h1>
-
-<div *ngIf="lista.length<=0" class="vitrine__vazia">
-    <i class="fa-solid fa-circle-xmark"></i>
-    <p class="vitrine__vazia-titulo">A vitrine está vazia!</p>
-    <p class="vitrine__vazia-texto">Não existem produtos cadastrados.</p>
-</div>
-
-<div class="row g-3 g-sm-4 g-md-5">
-    <div *ngFor="let item of lista" class="vitrine__produtos col-6 col-md-6 col-lg-4 col-xl-3">
-        <div class="vitrine__produto">
-            <a href="./detalhe">
-                <img src="../../assets/{{item.codigo}}.jpg" alt="Produto">
-            </a>
-            <div class="vitrine__produto-info">
-                <p class="vitrine__produto-nome" title="{{item.nome}}">{{item.nome}}</p>
-                <p class="vitrine__produto-preco">R$ {{item.valor | number:'1.2-2':'pt'}}</p>
-            </div>
-            <div class="vitrine__produto-botoes">
-                <a href="./detalhe" class="botao botao--transparente">Detalhes</a>
-                <button *ngIf="item.estoque>0" class="botao botao--vermelho">Comprar</button>
+<main>
+    <div class="container">
+        <h1 class="titulo">Vitrine</h1>
+        <div *ngIf="lista.length<=0" class="vazia">
+            <i class="fa-solid fa-circle-xmark"></i>
+            <p class="vazia__titulo">A vitrine está vazia!</p>
+            <p class="vazia__texto">Não existem produtos cadastrados.</p>
+        </div>
+        <div class="row g-3 g-sm-4 g-md-5">
+            <div *ngFor="let item of lista" class="vitrine__produtos col-6 col-md-6 col-lg-4 col-xl-3">
+                <div class="vitrine__produto">
+                    <a href="./detalhe">
+                        <img src="../../assets/{{item.codigo}}.jpg" alt="Produto">
+                    </a>
+                    <div class="vitrine__produto-info">
+                        <p class="vitrine__produto-nome" title="{{item.nome}}">{{item.nome}}</p>
+                        <p class="vitrine__produto-preco">R$ {{item.valor | number:'1.2-2':'pt'}}</p>
+                    </div>
+                    <div class="vitrine__produto-botoes">
+                        <a href="./detalhe" class="botao botao--transparente">Detalhes</a>
+                        <button *ngIf="item.estoque>0" class="botao botao--vermelho" (click)="comprar(item);">Comprar</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</main>

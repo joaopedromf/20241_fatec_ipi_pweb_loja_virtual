@@ -1,39 +1,13 @@
-.vitrine__vazia{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: .8rem;
-    margin-top: 5rem;
-    margin-bottom: 49.5vh;
-}
-
-.vitrine__vazia i{
-    color: var(--cor-principal);
-    font-size: 2rem;
-}
-
-.vitrine__vazia-titulo{
-    color: var(--cor-principal);
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin: 0;
-}
-
-.vitrine__vazia-texto{
-    margin: 0;
-    color: #5e5d5d;
-    font-weight: 300;
-    font-size: 1.1rem;
+main{
+    background-color: #F2F3F4;
 }
 
 .vitrine__produto{
     border: 2px solid #ccc;
-    background-color: #f5f2f2;
+    background-color: white;
     border-radius: 1rem;
     padding: 1.5rem;
     box-shadow: 2px 6px 10px rgba(0, 0, 0, 0.1);
-    height: 100%;
     transition: border .3s linear, box-shadow .3s linear;
 }
 

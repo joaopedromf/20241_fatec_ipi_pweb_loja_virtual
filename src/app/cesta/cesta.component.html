@@ -1,1 +1,41 @@
-<p>cesta works!</p>
+<main>
+    <div class="container">
+        <h1 class="titulo">Cesta de Compras</h1>
+        <div *ngIf="lista.length<=0" class="vazia">
+            <i class="fa-solid fa-circle-xmark"></i>
+            <p class="vazia__titulo">A cesta está vazia!</p>
+            <p class="vazia__texto">Você ainda não possui produtos na cesta.</p>
+            <a href="./vitrine" class="botao botao--vermelho" style="width: fit-content; padding: .5rem 1rem;">Ver produtos</a>
+        </div>
+        <table *ngIf="lista.length>0" class="cesta-tabela">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Produto</th>
+                    <th>Qtd.</th>
+                    <th>Valor unitário (R$)</th>
+                    <th>Valor total (R$)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of lista">
+                    <td class="cesta-tabela__imagem"><img src="../../assets/{{item.codigoProduto}}.jpg" alt="Produto"></td>
+                    <td class="cesta-tabela__produto">{{item.nomeProduto}}</td>
+                    <td class="cesta-tabela__qtd">{{item.qtd}}</td>
+                    <td class="cesta-tabela__vl-unitario">{{item.valor | number:'1.2-2':'pt'}}</td>
+                    <td class="cesta-tabela__vl-total">{{item.total | number:'1.2-2':'pt'}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="cesta-tabela__total-escrito">Total:</td>
+                    <td></td>
+                    <td class="cesta-tabela__total">R$ {{totalCesta | number:'1.2-2':'pt'}}</td>
+                </tr>
+            </tfoot>
+        </table>
+        <div *ngIf="lista.length>0" class="cesta-botoes">
+            <button class="botao botao--vermelho" (click)="limpar();">Limpar</button>
+        </div>
+    </div>
+</main>

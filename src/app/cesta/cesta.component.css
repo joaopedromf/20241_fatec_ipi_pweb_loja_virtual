@@ -1,0 +1,132 @@
+.cesta-tabela{
+    width: 100%;
+}
+
+.cesta-tabela thead th{
+    padding: 0 1rem 1rem 1rem;
+    font-weight: 300;
+}
+
+.cesta-tabela tbody tr td{
+    padding: 2rem 1rem 2rem 1rem;
+}
+
+.cesta-tabela tbody tr:not(:last-child){
+    border-bottom: 1px solid rgba(128, 128, 128, 1);
+}
+
+.cesta-tabela tbody tr:last-child td{
+    padding-bottom: 5rem;
+}
+
+.cesta-tabela .cesta-tabela__imagem{
+    width: 10%;
+}
+
+.cesta-tabela .cesta-tabela__imagem img{
+    width: 100%;
+    min-width: 100px;
+    border-radius: 8px;
+}
+
+.cesta-tabela .cesta-tabela__produto{
+    padding-left: 1rem;
+    width: 37%;
+    color: #5e5d5d;
+    font-weight: 600;
+}
+
+.cesta-tabela__qtd{
+    width: 13%;
+    color: #5e5d5d;
+    font-weight: 600;
+}
+
+.cesta-tabela__vl-unitario{
+    width: 20%;
+    color: #5e5d5d;
+    font-weight: 600;
+}
+
+.cesta-tabela__vl-total{
+    width: 20%;
+    color: var(--cor-principal);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.cesta-tabela__total-escrito{
+    font-weight: 400;
+    font-size: 1.8rem;
+}
+
+.cesta-tabela__total{
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.cesta-tabela tfoot tr td{
+    padding: 2rem 1rem 2rem 1rem;
+    border-top: 1px solid #ccc;
+    background-image: linear-gradient(to bottom, var(--cor-principal), rgb(230, 88, 88), rgb(156, 35, 35), var(--cor-secundaria));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--cor-principal);
+}
+
+.cesta-botoes{
+    width: 10%;
+    margin-bottom: 22vh;
+}
+
+@media screen and (max-width: 768px){
+    .cesta-tabela thead tr th:first-child,
+    .cesta-tabela tfoot tr td:nth-child(2),
+    .cesta-tabela .cesta-tabela__imagem{
+        display: none;
+    }
+    
+    .cesta-tabela tbody tr td{
+        font-size: .9rem;
+    }
+
+    .cesta-tabela__total{
+        font-size: 1rem;
+    }
+
+}
+
+@media screen and (max-width: 1200px){
+    .cesta-tabela thead th{
+        padding: 0 .8rem .8rem 0;
+    }
+    
+    .cesta-tabela tbody tr td{
+        padding: 2rem 1rem 2rem 0;
+    }
+
+    .cesta-tabela .cesta-tabela__produto{
+        width: 30%;
+    }
+    
+    .cesta-tabela__vl-total{
+        width: 27%;
+        font-size: 1rem;
+    }
+    
+    .cesta-tabela__total-escrito{
+        font-size: 1.5rem;
+    }
+    
+    .cesta-tabela tfoot tr td{
+        padding-right: 0;
+        padding-left: 0;
+        font-size: 1.1rem;
+    }
+
+    
+    .cesta-botoes{
+        width: 30%;
+    }
+}
