@@ -1,0 +1,101 @@
+label, input{
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+}
+
+label{
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+input{
+    padding: .8rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    color: #5e5d5d;
+    text-overflow: ellipsis;
+}
+
+input:focus{
+    outline: 1px solid var(--cor-principal);
+    box-shadow: 0 0 5px var(--cor-principal);
+}
+
+.login__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 21vh;
+}
+
+.login__formulario{
+    padding: 2rem;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.7rem;
+}
+
+.login__titulo{
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.login__formulario-links{
+    display: flex; 
+    gap: 2rem; 
+    justify-content: space-between; 
+    align-items: center;
+}
+
+.login__esqueci{
+    text-align: right;
+    color: var(--cor-principal);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.botao{
+    width: 20%;
+}
+
+.login__esqueci:hover,
+.login__cadastre a:hover{
+    color: var(--cor-secundaria);
+}
+
+.login__cadastre{
+    margin: 0;
+}
+
+.login__cadastre a{
+    color: var(--cor-principal);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 760px){
+    
+    .login__formulario-links{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .botao{
+        width: 100%;
+    }
+
+    .login__cadastre{
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 1000px){
+    
+    .login__formulario{
+        padding: 2rem 0;
+        width: 100%;
+        padding: 0 1rem;
+    }
+}
