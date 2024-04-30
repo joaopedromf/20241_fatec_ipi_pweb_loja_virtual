@@ -14,7 +14,8 @@
                     </a>
                     <div class="vitrine__produto-info">
                         <p class="vitrine__produto-nome" title="{{item.nome}}">{{item.nome}}</p>
-                        <p class="vitrine__produto-preco">R$ {{item.valor | number:'1.2-2':'pt'}}</p>
+                        <p class="vitrine__produto-preco" *ngIf="item.valor<=item.valorPromo||item.valorPromo==0">R$ {{item.valor | number:'1.2-2':'pt'}}</p>
+                        <p class="vitrine__produto-preco" *ngIf="item.valorPromo<item.valor&&item.valorPromo>0">R$ {{item.valorPromo | number:'1.2-2':'pt'}}</p>
                     </div>
                     <div class="vitrine__produto-botoes">
                         <a href="./detalhe" class="botao botao--transparente">Detalhes</a>

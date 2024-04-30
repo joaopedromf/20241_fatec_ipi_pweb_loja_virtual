@@ -1,1 +1,26 @@
-<p>detalhe works!</p>
+<main>
+    <div class="container">
+        <h1 class="titulo">Detalhes</h1>
+        <div class="detalhe">
+            <div class="detalhe__container-imagem">
+                <img src="../../assets/{{obj.codigo}}.jpg" alt="Produto" class="detalhe__imagem">
+            </div>
+            <div class="detalhes__info">
+                <h2 class="detalhes__info-titulo">{{obj.nome}}</h2>
+                <div>
+                    <p class="detalhes__info-preco-antigo" *ngIf="obj.valorPromo<obj.valor&&obj.valorPromo>0">R$ {{obj.valor | number:'1.2-2':'pt'}}</p>
+                    <p class="detalhes__info-preco" *ngIf="obj.valorPromo<obj.valor&&obj.valorPromo>0">R$ {{obj.valorPromo | number:'1.2-2':'pt'}}</p>
+                    <p class="detalhes__info-preco" *ngIf="obj.valor<=obj.valorPromo||obj.valorPromo==0">R$ {{obj.valor | number:'1.2-2':'pt'}}</p>
+                </div>
+                <div>
+                    <button *ngIf="obj.estoque>0" class="botao botao--vermelho" (click)="comprar();">Comprar</button>
+                    <button *ngIf="obj.estoque==0" disabled class="botao botao--transparente">Sem estoque</button>
+                </div>
+            </div>
+        </div>
+        <details class="detalhes__descricao" open>
+            <summary><i class="fa-solid fa-note-sticky"></i> Descrição do produto <i class="fa-solid fa-chevron-down"></i><i class="fa-solid fa-chevron-up"></i></summary>
+            <p class="detalhes__descricao-texto">{{obj.descritivo}}</p>
+        </details>
+    </div>
+</main>
