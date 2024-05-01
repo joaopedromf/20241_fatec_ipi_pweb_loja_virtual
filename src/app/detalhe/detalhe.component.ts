@@ -15,12 +15,17 @@ export class DetalheComponent {
   public obj : Produto = new Produto();
   
   constructor(){
-    this.obj.codigo = 1;
-    this.obj.nome = "Produto 1";
-    this.obj.descritivo = "Descrição";
-    this.obj.valor = 100;
-    this.obj.valorPromo = 1;
-    this.obj.estoque = 1;
+    try{
+      let json = localStorage.getItem("detalhe");
+
+      if(json == null){
+        window.location.href = "./vitrine";
+      }
+      else{
+        this.obj = JSON.parse(json);
+      }
+    }
+    catch(e){}
   }
 
   public comprar(){

@@ -26,6 +26,11 @@ main{
     border-radius: 1rem;
 }
 
+.vitrine__produto-link{
+    border: none;
+    background-color: transparent;
+}
+
 .vitrine__produto-nome{
     margin: 1.5rem 0 1rem;
     color: #5e5d5d;

@@ -23,8 +23,13 @@ details summary::-webkit-details-marker{
     border-radius: 1rem;
 }
 
+.detalhe__divisao{
+    display: block;
+    width: 1px;
+    background-color: #ccc;
+}
+
 .detalhes__info{
-    border-left: 1px solid #ccc;
     padding: 2rem 0;
     padding-left: 2rem;
     flex-basis: 50%;
@@ -131,6 +136,10 @@ details summary::-webkit-details-marker{
     
     .detalhe__imagem{
         max-width: 500px;
+    }
+    
+    .detalhe__divisao{
+        display: none;
     }
 
     .detalhes__info{
