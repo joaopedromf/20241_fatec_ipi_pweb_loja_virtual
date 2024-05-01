@@ -5,12 +5,12 @@
             <form class="login__formulario">
                 <h2 class="login__titulo">Entrar</h2>
                 <div class="login__formulario-campo">
-                    <label for="email">E-mail</label>
+                    <label for="email">E-mail <span class="login__required">*</span></label>
                     <input type="email" name="email" id="email" required placeholder="Digite seu e-mail">
                 </div>
                 <div class="login__formulario-campo">
-                    <label for="senha">Senha</label>
-                    <input type="password" name="senha" id="senha" required placeholder="Digite sua senha" pattern="[A-z0-9@#$%&]{6,50}" title="Entre com uma senha de no mínimo 6 digitos.">
+                    <label for="senha">Senha <span class="login__required">*</span></label>
+                    <input type="password" name="senha" id="senha" required placeholder="Digite sua senha">
                 </div>
                 <div class="login__formulario-links">
                     <a href="./esqueci" class="login__esqueci">Esqueci minha senha</a>
