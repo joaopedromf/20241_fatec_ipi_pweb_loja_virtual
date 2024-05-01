@@ -68,7 +68,7 @@
 .cesta-tabela tfoot tr td{
     padding: 2rem 1rem 2rem 1rem;
     border-top: 1px solid #ccc;
-    background-image: linear-gradient(to bottom, var(--cor-principal), rgb(230, 88, 88), rgb(156, 35, 35), var(--cor-secundaria));
+    background-image: linear-gradient(to bottom, var(--cor-principal), rgb(88, 145, 230), rgb(35, 102, 156), var(--cor-secundaria));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
