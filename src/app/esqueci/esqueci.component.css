@@ -1,0 +1,74 @@
+label, input{
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+}
+
+label{
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+input{
+    padding: .8rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    color: #5e5d5d;
+    text-overflow: ellipsis;
+}
+
+input:focus{
+    outline: 1px solid var(--cor-principal);
+    box-shadow: 0 0 5px var(--cor-principal);
+}
+
+.esqueci__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 38vh;
+}
+
+.esqueci__formulario{
+    padding: 2rem;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.7rem;
+}
+
+.esqueci__titulo{
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.esqueci__required{
+    color: red;
+}
+
+.botao{
+    width: 20%;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 400px){
+    .esqueci__titulo{
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 760px){
+
+    .botao{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1000px){
+    
+    .esqueci__formulario{
+        padding: 2rem 0;
+        width: 100%;
+        padding: 0 1rem;
+    }
+}
