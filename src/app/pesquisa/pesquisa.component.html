@@ -1,1 +1,29 @@
-<p>pesquisa works!</p>
+<main>
+    <div class="container">
+        <h1 class="titulo">Pesquisa</h1>
+        <h2 class="pesquisa__titulo">Você pesquisou por: <span class="pesquisa__palavra">{{pesquisa}}</span></h2>
+        <div *ngIf="listaFiltrada.length<=0" class="vazia">
+            <i class="fa-solid fa-circle-xmark"></i>
+            <p class="vazia__titulo">Nenhum produto foi encontrado.</p>
+            <p class="vazia__texto">Verifique o termo pesquisado ou tente novamente com outro termo.</p>
+        </div>
+        <div class="row g-3 g-sm-4 g-md-5">
+            <div *ngFor="let item of listaFiltrada" class="vitrine__produtos col-6 col-md-6 col-lg-4 col-xl-3">
+                <div class="vitrine__produto">
+                    <button class="vitrine__produto-link" (click)="detalhe(item);">
+                        <img src="../../assets/{{item.codigo}}.png" alt="Produto">
+                    </button>
+                    <div class="vitrine__produto-info" (click)="detalhe(item);">
+                        <p class="vitrine__produto-nome" title="{{item.nome}}">{{item.nome}}</p>
+                        <p class="vitrine__produto-preco" *ngIf="item.valor<=item.valorPromo||item.valorPromo==0">R$ {{item.valor | number:'1.2-2':'pt'}}</p>
+                        <p class="vitrine__produto-preco" *ngIf="item.valorPromo<item.valor&&item.valorPromo>0">R$ {{item.valorPromo | number:'1.2-2':'pt'}}</p>
+                    </div>
+                    <div class="vitrine__produto-botoes">
+                        <button class="botao botao--transparente" (click)="detalhe(item);">Detalhes</button>
+                        <button *ngIf="item.estoque>0" class="botao botao--vermelho" (click)="comprar(item);">Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

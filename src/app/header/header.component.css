@@ -1,0 +1,155 @@
+.cabecalho{
+    background-color: var(--cor-principal);
+    padding: 1rem 0 0;
+}
+
+.cabecalho__topo{
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.logo{
+    width: 100%;
+    max-width: 100px;
+    transition: transform .3s linear;
+}
+
+.logo:hover{
+    transform: scale(1.07);
+}
+
+.logo__desktop{
+    display: inline-block;
+}
+
+.logo__mobile{
+    display: none;
+}
+
+.cabecalho__busca{
+    width: 50%;
+    background-color: white;
+    padding: 5px 8px 5px 1.5rem;
+    border-radius: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cabecalho__busca input{
+    width: 100%;
+    border: none;
+    text-overflow: ellipsis;
+    color: #5e5d5d;
+}
+
+.cabecalho__busca input:focus{
+    outline: none;
+}
+
+.cabecalho__busca button{
+    border-radius: 50%;
+    padding: 10px;
+    width: 36px;
+    height: 36px;
+    background-color: transparent;
+    border: none;
+    transition: background-color .3s linear;
+}
+
+.cabecalho__busca button:hover{
+    background-color: #eeeded;
+}
+
+.cabecalho__busca button i{
+    vertical-align: top;
+    color: black;
+}
+
+.cabecalho__botoes{
+    display: flex;
+    gap: 2rem;
+}
+
+.cabecalho__botoes a i{
+    color: white;
+    font-size: 2rem;
+    transition: color .3s ease-in-out;
+}
+
+.cabecalho__botoes a i:hover{
+    color: #dddddd;
+}
+
+.cabecalho__menu{
+    border-top: 1px solid var(--cor-secundaria);
+}
+
+.cabecalho__menu-nav{
+    border-bottom: 1px solid var(--cor-secundaria);
+    display: flex;
+    justify-content: space-around;
+}
+
+.cabecalho__menu-link{
+    background-color: transparent;
+    border-top: none;
+    border-bottom: none;
+    border-right: 1px solid var(--cor-secundaria);
+    border-left: 1px solid var(--cor-secundaria);
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    padding: 10px;
+    width: 100%;
+    text-transform: uppercase;
+    transition: background-color .3s linear;
+}
+
+.cabecalho__menu-link:hover{
+    background-color: var(--cor-secundaria);
+}
+
+@media screen and (max-width: 400px){
+
+    .cabecalho__busca{
+        top: 50px;
+    }
+}
+
+@media screen and (max-width: 800px){
+
+    .cabecalho__topo{
+        position: relative;
+        margin-bottom: 5.3rem;
+        padding: 0 1.5rem;
+    }
+
+    .logo{
+        max-width: 80px;
+        /* min-width: 150px; */
+    }
+
+    .logo__desktop{
+        display: none;
+    }
+
+    .logo__mobile{
+        display: inline-block;
+    }
+
+    .cabecalho__busca{
+        width: auto;
+        position: absolute;
+        left: 1rem;
+        right: 1rem;
+        top: 75px;
+    }
+
+    .cabecalho__menu-nav{
+        display: none;
+    }
+}
