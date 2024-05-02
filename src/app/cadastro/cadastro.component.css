@@ -1,3 +1,8 @@
+main{
+    background-color: #F2F3F4;
+}
+
+
 label, input{
     width: 100%;
     box-sizing: border-box;
@@ -29,11 +34,14 @@ input:focus{
 }
 
 .cadastro__formulario{
-    padding: 2rem;
+    padding: 4rem 2rem;
     width: 80%;
     display: flex;
     flex-direction: column;
     gap: 1.7rem;
+    background-color: rgb(252, 252, 252);
+    border-radius: 1.5rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .cadastro__titulo{
@@ -73,6 +81,19 @@ input:focus{
     white-space: nowrap;
 }
 
+@media screen and (max-width: 600px){
+
+    main{
+        background-color: #FFF;
+    }
+
+    .cadastro__formulario{
+        background-color: transparent;
+        box-shadow: none;
+        padding: 2rem .5rem;
+    }
+}
+
 @media screen and (max-width: 760px){
 
     .botao{
@@ -89,8 +110,6 @@ input:focus{
 @media screen and (max-width: 1000px){
     
     .cadastro__formulario{
-        padding: 2rem 0;
         width: 100%;
-        padding: 0 1rem;
     }
 }

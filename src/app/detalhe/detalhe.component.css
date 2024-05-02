@@ -67,6 +67,10 @@ details summary::-webkit-details-marker{
     margin-right: 10px;
 }
 
+.detalhes__descricao:not(:last-child){
+    margin-bottom: 3rem;
+}
+
 .detalhes__descricao summary{
     font-size: 1.1rem;
     font-weight: 600;
@@ -106,10 +110,17 @@ details summary::-webkit-details-marker{
     font-weight: 300;
     background-color: #f5f5f5;
     padding: 1.5rem;
-    border-radius: 0 0 1rem 1rem;
     line-height: 2;
     text-align: justify;
     margin: 0;
+}
+
+.detalhes__descricao-texto:last-child{
+    border-radius: 0 0 1rem 1rem;
+}
+
+.detalhes__descricao-texto span{
+    font-weight: 500;
 }
 
 @media screen and (max-width: 760px){
