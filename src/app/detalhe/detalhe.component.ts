@@ -51,7 +51,17 @@ export class DetalheComponent {
     }
     else{
       lista = JSON.parse(json);
-      lista.push(itemCesta)
+      let indice: number = lista.findIndex(i => i.codigoProduto == itemCesta.codigoProduto);
+      
+      if(indice == -1){
+        lista.push(itemCesta)
+      }
+      else{
+        if(lista[indice].qtd < 50){
+          lista[indice].qtd++;
+          lista[indice].total = lista[indice].valor * lista[indice].qtd;
+        }
+      }
     }
 
     localStorage.setItem("cesta", JSON.stringify(lista));
