@@ -10,32 +10,62 @@
         <table *ngIf="lista.length>0" class="cesta-tabela">
             <thead>
                 <tr>
-                    <th></th>
-                    <th>Produto</th>
-                    <th>Qtd.</th>
-                    <th>Valor unitário (R$)</th>
-                    <th>Valor total (R$)</th>
+                    <th colspan="2">Produto</th>
+                    <th>Preço</th>
+                    <th>Quantidade</th>
+                    <th colspan="2">Total</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let item of lista">
                     <td class="cesta-tabela__imagem"><img src="../../assets/{{item.codigoProduto}}.png" alt="Produto"></td>
                     <td class="cesta-tabela__produto">{{item.nomeProduto}}</td>
-                    <td class="cesta-tabela__qtd">{{item.qtd}}</td>
-                    <td class="cesta-tabela__vl-unitario">{{item.valor | number:'1.2-2':'pt'}}</td>
-                    <td class="cesta-tabela__vl-total">{{item.total | number:'1.2-2':'pt'}}</td>
+                    <td class="cesta-tabela__vl-unitario">R$ {{item.valor | number:'1.2-2':'pt'}}</td>
+                    <td class="cesta-tabela__qtd">
+                        <div class="qtd__container">
+                            <button class="qtd_diminuir" (click)="diminuirQuantidade(item);"><i class="fa-solid fa-minus"></i></button>
+                            <input [(ngModel)]="item.qtd" (blur)="inputVazio(item);" (ngModelChange)="alterarQuantidade(item);" type="number" class="qtd" name="qtd" value="{{item.qtd}}">
+                            <button class="qtd_aumentar" (click)="aumentarQuantidade(item);"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </td>
+                    <td class="cesta-tabela__vl-total">R$ {{item.total | number:'1.2-2':'pt'}}</td>
+                    <td class="cesta-tabela__excluir"><button title="Remover" (click)="removerItem(item);"><i class="fa-solid fa-trash-can"></i></button></td>
                 </tr>
             </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="3" class="cesta-tabela__total-escrito">Total:</td>
-                    <td></td>
-                    <td class="cesta-tabela__total">R$ {{totalCesta | number:'1.2-2':'pt'}}</td>
-                </tr>
-            </tfoot>
         </table>
-        <div *ngIf="lista.length>0" class="cesta-botoes">
-            <button class="botao botao--vermelho" (click)="limpar();">Limpar</button>
+        <div class="cesta-cards">
+            <div *ngFor="let item of lista" class="cesta-card">
+                <div class="cesta-card__imagem">
+                    <img src="../../assets/{{item.codigoProduto}}.png" alt="Produto">
+                </div>
+                <div class="cesta-card__produto">
+                    <div class="cesta-card__linha">
+                        <p class="cesta-card__nome">{{item.nomeProduto}}</p>
+                        <button class="botao--remover" title="Remover" (click)="removerItem(item);"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                    <div class="cesta-card__info">
+                        <p class="cesta-card__preco">R$ {{item.valor | number:'1.2-2':'pt'}}</p>
+                        <div class="qtd__container">
+                            <button class="qtd_diminuir" (click)="diminuirQuantidade(item);"><i class="fa-solid fa-minus"></i></button>
+                            <input [(ngModel)]="item.qtd" (blur)="inputVazio(item);" (ngModelChange)="alterarQuantidade(item);" type="number" class="qtd" name="qtd" value="{{item.qtd}}">
+                            <button class="qtd_aumentar" (click)="aumentarQuantidade(item);"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <div *ngIf="lista.length>0" class="cesta-botoes">
+            <div class="cesta-botoes__limpar">
+                <button class="botao botao--vermelho" (click)="limpar();">Limpar</button>
+            </div>
+            <div class="cesta-botoes__pedido">
+                <div class="cesta-botoes__total-container">
+                    <p class="cesta-botoes__escrito">Total</p>
+                    <p class="cesta-botoes__total">R$ {{totalCesta | number:'1.2-2':'pt'}}</p>
+                </div>
+                <button class="botao botao--vermelho botao--pedido">Fechar pedido</button>
+            </div>
+        </div>
+
     </div>
 </main>

@@ -2,21 +2,23 @@
     width: 100%;
 }
 
+.cesta-tabela thead{
+    border: 1px solid #ccc;
+}
+
 .cesta-tabela thead th{
-    padding: 0 1rem 1rem 1rem;
-    font-weight: 300;
+    padding: 1rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.cesta-tabela tbody tr{
+    border: 1px solid #ccc;
+    color: #5e5d5d;
 }
 
 .cesta-tabela tbody tr td{
-    padding: 2rem 1rem 2rem 1rem;
-}
-
-.cesta-tabela tbody tr:not(:last-child){
-    border-bottom: 1px solid rgba(128, 128, 128, 1);
-}
-
-.cesta-tabela tbody tr:last-child td{
-    padding-bottom: 5rem;
+    padding: 2rem 1rem;
 }
 
 .cesta-tabela .cesta-tabela__imagem{
@@ -30,103 +32,236 @@
 }
 
 .cesta-tabela .cesta-tabela__produto{
-    padding-left: 1rem;
-    width: 37%;
-    color: #5e5d5d;
+    width: 30%;
+    font-weight: 400;
+}
+
+.cesta-tabela__vl-unitario{
+    width: 18%;
     font-weight: 600;
 }
 
 .cesta-tabela__qtd{
-    width: 13%;
-    color: #5e5d5d;
-    font-weight: 600;
+    width: 20%;
+    font-weight: 500;
 }
 
-.cesta-tabela__vl-unitario{
-    width: 20%;
-    color: #5e5d5d;
-    font-weight: 600;
+.qtd__container{
+    border: 1px solid #ccc;
+    width: fit-content;
+}
+
+.qtd{
+    -moz-appearance: textfield;
+    appearance: textfield;
+    width: 50px;
+    padding: 5px;
+    border: none;
+    text-align: center;
+}
+
+.qtd::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
+
+.qtd:focus{
+    outline: 2px solid black;
+}
+
+.fa-minus, .fa-plus{
+    color: #2c2c2c;
+}
+
+.qtd_diminuir, .qtd_aumentar{
+    border: none;
+    padding: 5px 10px;
+    background-color: transparent;
+    transition: background-color .3s linear;
+}
+
+.qtd_diminuir:hover, .qtd_aumentar:hover{
+    background-color: #f1f1f1;
 }
 
 .cesta-tabela__vl-total{
-    width: 20%;
+    width: 18%;
     color: var(--cor-principal);
     font-weight: 700;
+}
+
+.cesta-tabela__excluir{
+    width: 4%;
+    text-align: center;
+}
+
+.cesta-tabela__excluir button{
+    background-color: transparent;
+    border: none;
+    
+}
+
+.cesta-tabela__excluir button:hover i{
+    color: #727272;
+}
+
+.cesta-tabela__excluir i{
     font-size: 1.2rem;
-}
-
-.cesta-tabela__total-escrito{
-    font-weight: 400;
-    font-size: 1.8rem;
-}
-
-.cesta-tabela__total{
-    font-size: 1.8rem;
-    font-weight: 700;
-}
-
-.cesta-tabela tfoot tr td{
-    padding: 2rem 1rem 2rem 1rem;
-    border-top: 1px solid #ccc;
-    background-image: linear-gradient(to bottom, var(--cor-principal), rgb(88, 145, 230), rgb(35, 102, 156), var(--cor-secundaria));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: var(--cor-principal);
+    color: #8b8b8b
 }
 
 .cesta-botoes{
-    width: 10%;
-    margin-bottom: 22vh;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cesta-botoes__limpar{
+    flex-basis: 10%;
+}
+
+.cesta-botoes__pedido{
+    flex-basis: 41%;
+    margin-bottom: 24vh;
+}
+
+.cesta-botoes__total-container{
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cesta-botoes__escrito{
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.cesta-botoes__total{
+    margin: 0;
+    color: var(--cor-secundaria);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.botao--pedido{
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.cesta-cards{
+    display: none;
 }
 
 @media screen and (max-width: 768px){
-    .cesta-tabela thead tr th:first-child,
-    .cesta-tabela tfoot tr td:nth-child(2),
-    .cesta-tabela .cesta-tabela__imagem{
-        display: none;
+    .qtd{
+        width: 30px;
+        padding: 3px;
+        font-size: .8rem;
     }
     
-    .cesta-tabela tbody tr td{
-        font-size: .9rem;
+    .fa-minus, .fa-plus{
+        font-size: .8rem;
+    }
+    
+    .qtd_diminuir, .qtd_aumentar{
+        padding: 3px 8px;
     }
 
-    .cesta-tabela__total{
-        font-size: 1rem;
+    .cesta-card__nome{
+        font-size: .8rem;
     }
 
+    .botao--remover i{
+        font-size: .8rem;
+    }
+    
+    .cesta-card__preco{
+        font-size: .8rem;
+    }
+
+    .cesta-botoes__total{
+        font-size: 1.3rem;
+    }
 }
 
-@media screen and (max-width: 1200px){
-    .cesta-tabela thead th{
-        padding: 0 .8rem .8rem 0;
-    }
+@media screen and (max-width: 1000px){
     
-    .cesta-tabela tbody tr td{
-        padding: 2rem 1rem 2rem 0;
+    .cesta-tabela{
+        display: none;
     }
 
-    .cesta-tabela .cesta-tabela__produto{
-        width: 30%;
-    }
-    
-    .cesta-tabela__vl-total{
-        width: 27%;
-        font-size: 1rem;
-    }
-    
-    .cesta-tabela__total-escrito{
-        font-size: 1.5rem;
-    }
-    
-    .cesta-tabela tfoot tr td{
-        padding-right: 0;
-        padding-left: 0;
-        font-size: 1.1rem;
+    .cesta-cards{
+        display: block;
     }
 
+    .cesta-card{
+        color: #5e5d5d;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
     
+    .cesta-card:not(:last-child){
+        margin-bottom: 2rem;
+    }
+    
+    .cesta-card__imagem img{
+        width: 100%;
+        max-width: 100px;
+        border-radius: 8px;
+    }
+    
+    .cesta-card__produto{
+        flex-basis: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .cesta-card__linha{
+        display: flex;
+        justify-content: space-between;
+        gap: 1.2rem;
+    }
+    
+    .cesta-card__nome{
+        margin: 0;
+        font-weight: 400;
+    }
+
+    .botao--remover{
+        background-color: transparent;
+        border: none;
+    }
+    
+    .botao--remover i{
+        color: #8b8b8b;
+    }
+    
+    .cesta-card__preco{
+        margin: 0;
+        font-weight: 600;
+    }
+    
+    .cesta-card__info{
+        display: flex;
+        gap: .5rem;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
     .cesta-botoes{
-        width: 30%;
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .cesta-botoes__limpar{
+        width: 100px;
     }
 }
