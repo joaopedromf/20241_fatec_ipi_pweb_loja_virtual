@@ -89,7 +89,7 @@ input:focus{
 @media screen and (max-width: 600px){
 
     main{
-        background-color: #FFF;
+        background-color: rgb(252, 252, 252);
     }
 
     .login__formulario{

@@ -3,7 +3,30 @@
         <h1 class="titulo">Detalhes</h1>
         <div class="detalhe">
             <div class="detalhe__container-imagem">
-                <img src="../../assets/{{obj.codigo}}.png" alt="Produto" class="detalhe__imagem">
+                <div id="demo" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active bg-dark"></button>
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="1" class="bg-dark"></button>
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="2" class="bg-dark"></button>
+                    </div>
+                    <div class="carousel-inner pb-5">
+                        <div class="carousel-item active">
+                            <img src="../../assets/produto{{obj.codigo}}/{{obj.codigo}}.png" alt="Produto" class="d-block w-75 mx-auto">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../../assets/produto{{obj.codigo}}/{{obj.codigo}}.1.png" alt="Produto" class="d-block w-75 mx-auto">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../../assets/produto{{obj.codigo}}/{{obj.codigo}}.2.png" alt="Produto" class="d-block w-75 mx-auto">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                        <i class="fa-solid fa-chevron-left carrossel-botao"></i>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                        <i class="fa-solid fa-chevron-right carrossel-botao"></i>
+                    </button>
+                </div>
             </div>
             <span class="detalhe__divisao"></span>
             <div class="detalhes__info">
@@ -26,7 +49,9 @@
         <details class="detalhes__descricao" open>
             <summary><i class="fa-solid fa-note-sticky"></i> Especificações do produto <i class="fa-solid fa-chevron-down"></i><i class="fa-solid fa-chevron-up"></i></summary>
             <p class="detalhes__descricao-texto"><span>Marca:</span> {{obj.marca}}</p>
+            <p class="detalhes__descricao-texto"><span>Modelo:</span> {{obj.modelo}}</p>
             <p class="detalhes__descricao-texto"><span>Cor:</span> {{obj.cor}}</p>
+            <p class="detalhes__descricao-texto"><span>Tela:</span> {{obj.tela | number:'1.1-2':'pt'}} polegadas</p>
             <p class="detalhes__descricao-texto"><span>Memória interna:</span> {{obj.memoriaInterna}}GB</p>
             <p class="detalhes__descricao-texto"><span>Memória RAM:</span> {{obj.memoriaRam}}GB</p>
         </details>

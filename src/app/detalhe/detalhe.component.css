@@ -17,10 +17,15 @@ details summary::-webkit-details-marker{
     padding: 2rem 0;
 }
 
-.detalhe__imagem{
+/* .detalhe__imagem{
     display: inline-block;
     width: 100%;
     border-radius: 1rem;
+} */
+
+.carrossel-botao{
+    color: #b3b3b3;
+    font-size: 1.6rem;
 }
 
 .detalhe__divisao{

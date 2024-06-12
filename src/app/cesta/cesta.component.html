@@ -18,7 +18,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let item of lista">
-                    <td class="cesta-tabela__imagem"><img src="../../assets/{{item.codigoProduto}}.png" alt="Produto"></td>
+                    <td class="cesta-tabela__imagem"><img src="../../assets/produto{{item.codigoProduto}}/{{item.codigoProduto}}.png" alt="Produto"></td>
                     <td class="cesta-tabela__produto">{{item.nomeProduto}}</td>
                     <td class="cesta-tabela__vl-unitario">R$ {{item.valor | number:'1.2-2':'pt'}}</td>
                     <td class="cesta-tabela__qtd">
@@ -36,7 +36,7 @@
         <div class="cesta-cards">
             <div *ngFor="let item of lista" class="cesta-card">
                 <div class="cesta-card__imagem">
-                    <img src="../../assets/{{item.codigoProduto}}.png" alt="Produto">
+                    <img src="../../assets/produto{{item.codigoProduto}}/{{item.codigoProduto}}.png" alt="Produto">
                 </div>
                 <div class="cesta-card__produto">
                     <div class="cesta-card__linha">
