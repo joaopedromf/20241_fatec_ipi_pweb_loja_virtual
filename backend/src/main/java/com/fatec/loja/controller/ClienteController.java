@@ -64,7 +64,7 @@ public class ClienteController {
     public ResponseEntity<Void> remover(@PathVariable int codigo){
         Optional<ClienteEntity> obj = repository.findById(codigo);
         if(obj.isPresent()){
-            repository.deleteById(codigo);;
+            repository.deleteById(codigo);
             return ResponseEntity.noContent().build();
         }
         else{
