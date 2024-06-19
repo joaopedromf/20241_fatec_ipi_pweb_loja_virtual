@@ -4,10 +4,10 @@
             <img src="./assets/logo_vertical_branco.png" alt="Logotipo da CloudShop" class="logo logo__desktop">
             <img src="../../assets/logo_simbolo.png" alt="Logotipo da CloudShop" class="logo logo__mobile">
         </a>
-        <div class="cabecalho__busca">
+        <form class="cabecalho__busca">
             <input [(ngModel)]="pesquisa" type="text" name="pesquisa" placeholder="Buscar...">
             <button title="Pesquisar" (click)="pesquisar(pesquisa);"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </div>
+        </form>
         <nav class="cabecalho__botoes">
             <a href="./vitrine" title="Vitrine"><i class="fa-solid fa-mobile-screen-button"></i></a>
             <a href="./login" title="Login"><i class="fa-solid fa-circle-user"></i></a>

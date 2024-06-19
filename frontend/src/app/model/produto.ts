@@ -11,7 +11,7 @@ export class Produto {
     public descritivo: string;
     public valor: number;
     public valorPromo: number;
-    public destaque: number;
+    public destaque: boolean;
     public estoque: number;
 
     constructor(){
@@ -26,7 +26,7 @@ export class Produto {
         this.descritivo = "";
         this.valor = 0;
         this.valorPromo = 0;
-        this.destaque = 0;
+        this.destaque = false;
         this.estoque = 0;
     }
 }

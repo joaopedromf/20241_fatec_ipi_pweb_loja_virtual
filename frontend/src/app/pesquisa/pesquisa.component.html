@@ -1,14 +1,17 @@
 <main>
     <div class="container">
         <h1 class="titulo">Pesquisa</h1>
+        <div *ngIf="mensagem!==''" class="alert alert-warning">
+            <strong>Aviso!</strong> {{mensagem}}
+        </div>
         <h2 class="pesquisa__titulo">Você pesquisou por: <span class="pesquisa__palavra">{{pesquisa}}</span></h2>
-        <div *ngIf="listaFiltrada.length<=0" class="vazia">
+        <div *ngIf="lista.length<=0" class="vazia">
             <i class="fa-solid fa-circle-xmark"></i>
             <p class="vazia__titulo">Nenhum produto foi encontrado.</p>
             <p class="vazia__texto">Verifique o termo pesquisado ou tente novamente com outro termo.</p>
         </div>
         <div class="row g-3 g-sm-4 g-md-5">
-            <div *ngFor="let item of listaFiltrada" class="vitrine__produtos col-6 col-md-6 col-lg-4 col-xl-3">
+            <div *ngFor="let item of lista" class="vitrine__produtos col-6 col-md-6 col-lg-4 col-xl-3">
                 <div class="vitrine__produto">
                     <button class="vitrine__produto-link" (click)="detalhe(item);">
                         <img src="../../assets/produto{{item.codigo}}/{{item.codigo}}.png" alt="Produto">
