@@ -3,6 +3,7 @@ import { Produto } from '../model/produto';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Item } from '../model/item';
+import { ProdutoService } from '../service/produto.service';
 
 @Component({
   selector: 'app-detalhe',
@@ -12,17 +13,29 @@ import { Item } from '../model/item';
   styleUrl: './detalhe.component.css'
 })
 export class DetalheComponent {
+  public mensagem: String = "";
   public obj : Produto = new Produto();
   
-  constructor(){
+  public constructor(private service: ProdutoService){
     try{
-      let json = localStorage.getItem("detalhe");
-
-      if(json == null){
-        window.location.href = "./vitrine";
+      let codigo = localStorage.getItem("detalhe");
+      if(codigo == null){
+        this.mensagem = "Produto não encontrado.";
       }
       else{
-        this.obj = JSON.parse(json);
+        this.service.carregar(codigo).subscribe(
+          (data: Produto) => {
+            if(data == null){
+              this.mensagem = "Produto não encontrado.";
+            }
+            else{
+              this.obj = data;
+            }
+          },
+          (error) => {
+            this.mensagem = "Ocorreu um erro no carregamento dos detalhes.";
+          }
+        )
       }
     }
     catch(e){}

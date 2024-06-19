@@ -1,7 +1,10 @@
 <main>
     <div class="container">
         <h1 class="titulo">Detalhes</h1>
-        <div class="detalhe">
+        <div *ngIf="mensagem!==''" class="alert alert-warning" style="margin-bottom: 55vh;">
+            <strong>Aviso!</strong> {{mensagem}}
+        </div>
+        <div *ngIf="mensagem===''" class="detalhe">
             <div class="detalhe__container-imagem">
                 <div id="demo" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
@@ -11,13 +14,13 @@
                     </div>
                     <div class="carousel-inner pb-5">
                         <div class="carousel-item active">
-                            <img src="../../assets/produto{{obj.codigo}}/{{obj.codigo}}.png" alt="Produto" class="d-block w-75 mx-auto">
+                            <img *ngIf="obj.codigo !== 0" src="../../assets/produto{{obj.codigo}}/{{obj.codigo}}.png" alt="Produto" class="d-block w-75 mx-auto">
                         </div>
                         <div class="carousel-item">
-                            <img src="../../assets/produto{{obj.codigo}}/{{obj.codigo}}.1.png" alt="Produto" class="d-block w-75 mx-auto">
+                            <img *ngIf="obj.codigo !== 0" src="../../assets/produto{{obj.codigo}}/{{obj.codigo}}.1.png" alt="Produto" class="d-block w-75 mx-auto">
                         </div>
                         <div class="carousel-item">
-                            <img src="../../assets/produto{{obj.codigo}}/{{obj.codigo}}.2.png" alt="Produto" class="d-block w-75 mx-auto">
+                            <img *ngIf="obj.codigo !== 0" src="../../assets/produto{{obj.codigo}}/{{obj.codigo}}.2.png" alt="Produto" class="d-block w-75 mx-auto">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
@@ -42,11 +45,11 @@
                 </div>
             </div>
         </div>
-        <details class="detalhes__descricao" open>
+        <details *ngIf="mensagem===''" class="detalhes__descricao" open>
             <summary><i class="fa-solid fa-note-sticky"></i> Descrição do produto <i class="fa-solid fa-chevron-down"></i><i class="fa-solid fa-chevron-up"></i></summary>
             <p class="detalhes__descricao-texto">{{obj.descritivo}}</p>
         </details>
-        <details class="detalhes__descricao" open>
+        <details *ngIf="mensagem===''" class="detalhes__descricao" open>
             <summary><i class="fa-solid fa-note-sticky"></i> Especificações do produto <i class="fa-solid fa-chevron-down"></i><i class="fa-solid fa-chevron-up"></i></summary>
             <p class="detalhes__descricao-texto"><span>Marca:</span> {{obj.marca}}</p>
             <p class="detalhes__descricao-texto"><span>Modelo:</span> {{obj.modelo}}</p>
