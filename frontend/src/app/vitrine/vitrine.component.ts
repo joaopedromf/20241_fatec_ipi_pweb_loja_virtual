@@ -17,6 +17,7 @@ registerLocaleData(localePt);
 })
 export class VitrineComponent {
   public mensagem: String;
+  public nivelMensagem: Number = 0;
   public lista: Produto[] = [];
 
   public constructor(private service: ProdutoService){
@@ -24,6 +25,7 @@ export class VitrineComponent {
     this.service.listar().subscribe(
       (data) => {
         if(data==null){
+          this.nivelMensagem = 2;
           this.mensagem = "Produtos não encontrados.";
         }
         else{
@@ -31,6 +33,7 @@ export class VitrineComponent {
         }
       },
       (error) => {
+        this.nivelMensagem = 3;
         this.mensagem = "Ocorreu um erro no carregamento da vitrine.";
       }
     )
@@ -79,5 +82,9 @@ export class VitrineComponent {
 
     localStorage.setItem("cesta", JSON.stringify(lista));
     window.location.href="./cesta";
+  }
+
+  public avisoFechado(){
+    this.mensagem = "";
   }
 }

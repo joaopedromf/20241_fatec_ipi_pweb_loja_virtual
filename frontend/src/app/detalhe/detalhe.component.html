@@ -1,8 +1,9 @@
 <main>
     <div class="container">
         <h1 class="titulo">Detalhes</h1>
-        <div *ngIf="mensagem!==''" class="alert alert-warning" style="margin-bottom: 55vh;">
-            <strong>Aviso!</strong> {{mensagem}}
+        <div *ngIf="mensagem!==''" class="alert alert-dismissible alerta" [ngClass]="{'alert-success': nivelMensagem === 1, 'alert-warning': nivelMensagem === 2, 'alert-danger': nivelMensagem === 3}" style="margin-bottom: 55vh;">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="avisoFechado();"></button>
+            <strong><i class="fa-solid fa-circle-info alerta__icone"></i></strong>  {{mensagem}}
         </div>
         <div *ngIf="mensagem===''" class="detalhe">
             <div class="detalhe__container-imagem">

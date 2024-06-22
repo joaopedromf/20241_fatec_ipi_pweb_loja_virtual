@@ -88,6 +88,14 @@ main{
     color: var(--cor-secundaria);
 }
 
+.alerta{
+    margin-bottom: 2rem;
+}
+
+.alerta__icone{
+    padding-right: 5px;
+}
+
 .rodape{
     padding: 2rem 0;
     background: rgb(54, 53, 53);

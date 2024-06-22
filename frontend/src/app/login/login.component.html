@@ -1,16 +1,21 @@
 <main>
     <div class="container">
         <h1 class="titulo">Login</h1>
+        <div *ngIf="mensagem!==''" class="alert alert-dismissible alerta" [ngClass]="{'alert-success': nivelMensagem === 1, 'alert-warning': nivelMensagem === 2, 'alert-danger': nivelMensagem === 3}">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="avisoFechado();"></button>
+            <strong><i class="fa-solid fa-circle-info alerta__icone"></i></strong>  {{mensagem}}
+        </div>
         <div class="login__container">
             <form class="login__formulario">
                 <h2 class="login__titulo">Entrar</h2>
                 <div class="login__formulario-campo">
-                    <label for="email">E-mail <span class="login__required">*</span></label>
-                    <input type="email" name="email" id="email" required placeholder="Digite seu e-mail">
+                    <input [(ngModel)]="obj.email" type="email" name="email" id="email" required placeholder="">
+                    <label for="email">E-mail</label>
                 </div>
                 <div class="login__formulario-campo">
-                    <label for="senha">Senha <span class="login__required">*</span></label>
-                    <input type="password" name="senha" id="senha" required placeholder="Digite sua senha">
+                    <input [(ngModel)]="obj.senha" [type]="tipoInput" name="senha" id="senha" required placeholder="">
+                    <label for="senha">Senha</label>
+                    <button type="button" class="visibilidade-senha" (click)="mudarVisibilidadeSenha();"><i class="fa-solid fa-eye-slash" *ngIf="tipoInput === 'password'"></i><i class="fa-solid fa-eye" *ngIf="tipoInput === 'text'"></i></button>
                 </div>
                 <div class="login__formulario-links">
                     <a href="./esqueci" class="login__esqueci">Esqueci minha senha</a>

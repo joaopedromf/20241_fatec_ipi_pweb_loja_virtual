@@ -17,6 +17,7 @@ registerLocaleData(localePt);
 })
 export class PesquisaComponent {
   public mensagem: string = "";
+  public nivelMensagem: Number = 0;
   public pesquisa: string = "";
   public lista: Produto[] = [];
 
@@ -25,6 +26,7 @@ export class PesquisaComponent {
       let json = localStorage.getItem("pesquisa");
 
       if(json == null){
+        this.nivelMensagem = 2;
         this.mensagem = "Produtos não encontrados.";
       }
       else{
@@ -32,6 +34,7 @@ export class PesquisaComponent {
         this.service.pesquisar(this.pesquisa).subscribe(
           (data: Produto[]) => {
             if(data==null){
+              this.nivelMensagem = 2;
               this.mensagem = "Produtos não encontrados.";
             }
             else{
@@ -39,6 +42,7 @@ export class PesquisaComponent {
             }
           },
           (error) => {
+            this.nivelMensagem = 3;
             this.mensagem = "Ocorreu um erro no carregamento da vitrine.";
           }
         )
@@ -90,5 +94,9 @@ export class PesquisaComponent {
 
     localStorage.setItem("cesta", JSON.stringify(lista));
     window.location.href="./cesta";
+  }
+
+  public avisoFechado(){
+    this.mensagem = "";
   }
 }

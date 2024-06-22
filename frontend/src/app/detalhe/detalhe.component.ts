@@ -14,18 +14,21 @@ import { ProdutoService } from '../service/produto.service';
 })
 export class DetalheComponent {
   public mensagem: String = "";
+  public nivelMensagem: Number = 0;
   public obj : Produto = new Produto();
   
   public constructor(private service: ProdutoService){
     try{
       let codigo = localStorage.getItem("detalhe");
       if(codigo == null){
+        this.nivelMensagem = 2;
         this.mensagem = "Produto não encontrado.";
       }
       else{
         this.service.carregar(codigo).subscribe(
           (data: Produto) => {
             if(data == null){
+              this.nivelMensagem = 2;
               this.mensagem = "Produto não encontrado.";
             }
             else{
@@ -33,6 +36,7 @@ export class DetalheComponent {
             }
           },
           (error) => {
+            this.nivelMensagem = 3;
             this.mensagem = "Ocorreu um erro no carregamento dos detalhes.";
           }
         )
@@ -79,5 +83,9 @@ export class DetalheComponent {
 
     localStorage.setItem("cesta", JSON.stringify(lista));
     window.location.href="./cesta";
+  }
+
+  public avisoFechado(){
+    this.mensagem = "";
   }
 }

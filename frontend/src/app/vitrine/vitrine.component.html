@@ -1,8 +1,9 @@
 <main>
     <div class="container">
         <h1 class="titulo">Vitrine</h1>
-        <div *ngIf="mensagem!==''" class="alert alert-warning">
-            <strong>Aviso!</strong> {{mensagem}}
+        <div *ngIf="mensagem!==''" class="alert alert-dismissible alerta" [ngClass]="{'alert-success': nivelMensagem === 1, 'alert-warning': nivelMensagem === 2, 'alert-danger': nivelMensagem === 3}">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="avisoFechado();"></button>
+            <strong><i class="fa-solid fa-circle-info alerta__icone"></i></strong>  {{mensagem}}
         </div>
         <div *ngIf="lista.length<=0" class="vazia">
             <i class="fa-solid fa-circle-xmark"></i>

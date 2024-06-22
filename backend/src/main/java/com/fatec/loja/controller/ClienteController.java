@@ -76,6 +76,7 @@ public class ClienteController {
     public ResponseEntity<ClienteEntity> fazerLogin(@RequestBody ClienteEntity cliente){
         Optional<ClienteEntity> retorno = repository.fazerLogin(cliente.getEmail(), cliente.getSenha());
         if(retorno.isPresent()){
+            retorno.get().setSenha(cliente.getSenha());
             return ResponseEntity.ok(retorno.get());
         }
         else{
