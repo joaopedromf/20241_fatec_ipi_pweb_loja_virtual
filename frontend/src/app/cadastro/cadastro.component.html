@@ -1,61 +1,77 @@
 <main>
     <div class="container">
         <h1 class="titulo">Cadastro</h1>
+        <div *ngIf="mensagem!==''" class="alert alert-dismissible alerta" [ngClass]="{'alert-success': nivelMensagem === 1, 'alert-info': nivelMensagem === 2, 'alert-danger': nivelMensagem === 3}">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="avisoFechado();"></button>
+            <strong><i class="fa-solid fa-circle-info alerta__icone"></i></strong>  {{mensagem}}
+        </div>
         <div class="cadastro__container">
             <form class="cadastro__formulario">
                 <h2 class="cadastro__titulo">Criar conta</h2>
                 <div class="cadastro__formulario-campo">
                     <div>
-                        <label for="nome">Nome completo <span class="cadastro__required">*</span></label>
-                        <input type="text" [(ngModel)]="obj.nome" name="nome" id="nome" required placeholder="Digite seu nome completo">
+                        <input type="text" [(ngModel)]="obj.nome" name="nome" id="nome" required placeholder="">
+                        <label for="nome">Nome completo *</label>
                     </div>
                     <div>
-                        <label for="cpf">CPF <span class="cadastro__required">*</span></label>
-                        <input type="text" [(ngModel)]="obj.cpf" name="cpf" id="cpf" required placeholder="Digite seu CPF">
-                    </div>
-                </div>
-                <div class="cadastro__formulario-campo">
-                    <div>
-                        <label for="email">E-mail <span class="cadastro__required">*</span></label>
-                        <input type="email" [(ngModel)]="obj.email" name="email" id="email" required placeholder="Digite seu e-mail">
-                    </div>
-                    <div>
-                        <label for="senha">Senha <span class="cadastro__required">*</span></label>
-                        <input type="password" [(ngModel)]="obj.senha" name="senha" id="senha" required placeholder="Crie uma senha">
+                        <input type="text" [(ngModel)]="obj.cpf" name="cpf" id="cpf" required placeholder="">
+                        <label for="cpf">CPF *</label>
                     </div>
                 </div>
                 <div class="cadastro__formulario-campo">
                     <div>
-                        <label for="telefone">Telefone <span class="cadastro__required">*</span></label>
-                        <input type="text" [(ngModel)]="obj.telefone" name="telefone" id="telefone" required placeholder="Digite seu telefone">
+                        <input type="email" [(ngModel)]="obj.email" name="email" id="email" required placeholder="">
+                        <label for="email">E-mail *</label>
                     </div>
                     <div>
-                        <label for="cep">CEP <span class="cadastro__required">*</span></label>
-                        <input type="text" [(ngModel)]="obj.cep" name="cep" id="cep" required placeholder="Digite seu CEP">
+                        <input type="password" [(ngModel)]="obj.senha" [type]="tipoInput" name="senha" id="senha" required placeholder="">
+                        <label for="senha">Senha *</label>
+                        <button type="button" class="visibilidade-senha" (click)="mudarVisibilidadeSenha();"><i class="fa-solid fa-eye-slash" *ngIf="tipoInput === 'password'"></i><i class="fa-solid fa-eye" *ngIf="tipoInput === 'text'"></i></button>
                     </div>
                 </div>
                 <div class="cadastro__formulario-campo">
                     <div>
-                        <label for="endereco">Endereço <span class="cadastro__required">*</span></label>
-                        <input type="text" [(ngModel)]="obj.endereco" name="endereco" id="endereco" required placeholder="Digite seu endereço">
+                        <input type="text" [(ngModel)]="obj.telefone" name="telefone" id="telefone" required placeholder="">
+                        <label for="telefone">Telefone *</label>
                     </div>
                     <div>
+                        <input type="text" [(ngModel)]="obj.cep" name="cep" id="cep" required placeholder="">
+                        <label for="cep">CEP *</label>
+                    </div>
+                </div>
+                <div class="cadastro__formulario-campo">
+                    <div>
+                        <input type="text" [(ngModel)]="obj.endereco" name="endereco" id="endereco" required placeholder="">
+                        <label for="endereco">Endereço *</label>
+                    </div>
+                    <div>
+                        <input type="text" [(ngModel)]="obj.complemento" name="complemento" id="complemento" placeholder="">
                         <label for="complemento">Complemento</label>
-                        <input type="text" [(ngModel)]="obj.complemento" name="complemento" id="complemento" placeholder="Digite o complemento">
                     </div>
                 </div>
                 <div class="cadastro__formulario-campo">
                     <div>
-                        <label for="cidade">Cidade <span class="cadastro__required">*</span></label>
-                        <input type="text" [(ngModel)]="obj.cidade" name="cidade" id="cidade" required placeholder="Digite sua cidade">
+                        <input type="text" [(ngModel)]="obj.cidade" name="cidade" id="cidade" required placeholder="">
+                        <label for="cidade">Cidade *</label>
                     </div>
                     <div>
-                        <label for="estado">Estado <span class="cadastro__required">*</span></label>
-                        <input type="text" [(ngModel)]="obj.estado" name="estado" id="estado" required placeholder="Digite seu estado">
+                        <input type="text" [(ngModel)]="obj.estado" name="estado" id="estado" required placeholder="">
+                        <label for="estado">Estado *</label>
                     </div>
                 </div>
                 <button type="submit" class="botao botao--vermelho" (click)="gravar();">Cadastrar</button>
                 <p class="cadastro__login">Já possui cadastro? <a href="./login">Entrar</a></p>
+                <div class="cadastro__formulario-funcoes">
+                    <div class="cadastro__formulario-codigo">
+                        <input type="number" min="0" [(ngModel)]="obj.codigo" name="codigo" id="codigo" required placeholder="">
+                        <label for="codigo">Código</label>
+                    </div>
+                    <div class="cadastro__formulario-botoes">
+                        <button type="button" class="botao botao--vermelho" (click)="alterar();">Alterar</button>
+                        <button type="button" class="botao botao--vermelho" (click)="remover();">Remover</button>
+                        <button type="button" class="botao botao--vermelho" (click)="carregar();">Pesquisar</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

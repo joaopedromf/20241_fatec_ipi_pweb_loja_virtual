@@ -42,7 +42,6 @@ public class ClienteController {
 
     @PostMapping("/api/cliente")
     public ResponseEntity<ClienteEntity> gravar(@RequestBody ClienteEntity cliente){
-        cliente.setSenha(repository.criptografarSenha(cliente.getSenha()));
         repository.save(cliente);
         return ResponseEntity.status(201).body(cliente);
     }
@@ -51,7 +50,6 @@ public class ClienteController {
     public ResponseEntity<ClienteEntity> atualizar(@RequestBody ClienteEntity cliente){
         Optional<ClienteEntity> obj = repository.findById(cliente.getCodigo());
         if(obj.isPresent()){
-            cliente.setSenha(repository.criptografarSenha(cliente.getSenha()));
             repository.save(cliente);
             return ResponseEntity.ok(cliente);
         }
@@ -76,7 +74,6 @@ public class ClienteController {
     public ResponseEntity<ClienteEntity> fazerLogin(@RequestBody ClienteEntity cliente){
         Optional<ClienteEntity> retorno = repository.fazerLogin(cliente.getEmail(), cliente.getSenha());
         if(retorno.isPresent()){
-            retorno.get().setSenha(cliente.getSenha());
             return ResponseEntity.ok(retorno.get());
         }
         else{

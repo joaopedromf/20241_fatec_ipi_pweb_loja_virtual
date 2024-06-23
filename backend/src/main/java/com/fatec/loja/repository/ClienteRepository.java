@@ -12,9 +12,6 @@ import com.fatec.loja.entity.ClienteEntity;
 @Repository
 public interface ClienteRepository extends JpaRepository<ClienteEntity, Integer>, JpaSpecificationExecutor<ClienteEntity>{
     
-    @Query(value="SELECT * FROM cliente WHERE email = ?1 AND senha = md5(?2)", nativeQuery = true)
+    @Query(value="SELECT * FROM cliente WHERE BINARY email = ?1 AND BINARY senha = ?2", nativeQuery = true)
     Optional<ClienteEntity> fazerLogin(String email, String senha);
-
-    @Query(value = "SELECT md5(?1)", nativeQuery = true)
-    String criptografarSenha(String senha);
 }

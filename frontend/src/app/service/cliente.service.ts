@@ -10,49 +10,19 @@ export class ClienteService {
 
   constructor(private http: HttpClient) {}
 
-  public gravar(obj: Cliente): string{
-    let mensagem = "";
-    this.http.post<String>("http://localhost:8090/api/cliente", obj).subscribe({
-      next: data => {
-        mensagem = "Registro salvo com sucesso!";
-      },
-      error: error => {
-        console.log(error);
-        mensagem = "Ocorreu um erro durante a gravação!";
-      }
-    });
-    return mensagem;
+  public gravar(obj: Cliente): Observable<String>{
+    return this.http.post<String>("http://localhost:8090/api/cliente", obj);
   }
 
-  public alterar(obj: Cliente): string{
-    let mensagem = "";
-    this.http.put<String>("http://localhost:8090/api/cliente", obj).subscribe({
-      next: data => {
-        mensagem = "Registro alterado com sucesso!";
-      },
-      error: error => {
-        console.log(error);
-        mensagem = "Ocorreu um erro durante a alteração!";
-      }
-    });
-    return mensagem;
+  public alterar(obj: Cliente): Observable<String>{
+    return this.http.put<String>("http://localhost:8090/api/cliente", obj)
   }
 
-  public remover(obj: Cliente): string{
-    let mensagem = "";
-    this.http.delete<String>("http://localhost:8090/api/cliente/" + obj.codigo).subscribe({
-      next: data => {
-        mensagem = "Registro removido com sucesso!";
-      },
-      error: error => {
-        console.log(error);
-        mensagem = "Ocorreu um erro durante a remoção!";
-      }
-    });
-    return mensagem;
+  public remover(obj: Cliente): Observable<String>{
+    return this.http.delete<String>("http://localhost:8090/api/cliente/" + obj.codigo);
   }
 
-  public carregar(codigo: string): Observable<Cliente>{
+  public carregar(codigo: number): Observable<Cliente>{
     return this.http.get<Cliente>("http://localhost:8090/api/cliente/" + codigo);
   }
 

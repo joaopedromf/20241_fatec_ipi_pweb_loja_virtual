@@ -47,6 +47,15 @@ public class ProdutoController {
         return ResponseEntity.status(201).body(produto);
     }
 
+    @PostMapping("/api/produtos")
+    public ResponseEntity<List<ProdutoEntity>> gravarLista(@RequestBody List<ProdutoEntity> produtos){
+        for(ProdutoEntity produto : produtos){
+            produto.setNome();
+        }
+        repository.saveAll(produtos);
+        return ResponseEntity.status(201).body(produtos);
+    }
+
     @PutMapping("/api/produto")
     public ResponseEntity<ProdutoEntity> atualizar(@RequestBody ProdutoEntity produto){
         Optional<ProdutoEntity> obj = repository.findById(produto.getCodigo());
