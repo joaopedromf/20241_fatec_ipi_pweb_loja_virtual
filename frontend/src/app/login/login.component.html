@@ -1,7 +1,7 @@
 <main>
     <div class="container">
         <h1 class="titulo">Login</h1>
-        <div *ngIf="mensagem!==''" class="alert alert-dismissible alerta" [ngClass]="{'alert-success': nivelMensagem === 1, 'alert-warning': nivelMensagem === 2, 'alert-danger': nivelMensagem === 3}">
+        <div *ngIf="mensagem!==''" class="alert alert-dismissible alerta" [ngClass]="{'alert-success': nivelMensagem === 1, 'alert-info': nivelMensagem === 2, 'alert-warning': nivelMensagem === 3, 'alert-danger': nivelMensagem === 4}">
             <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="avisoFechado();"></button>
             <strong><i class="fa-solid fa-circle-info alerta__icone"></i></strong>  {{mensagem}}
         </div>

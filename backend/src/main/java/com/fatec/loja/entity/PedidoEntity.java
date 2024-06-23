@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
 public class PedidoEntity {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) 
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private int codigo;
     private int codigoCliente;
     private double total;

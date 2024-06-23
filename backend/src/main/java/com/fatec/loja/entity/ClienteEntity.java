@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 public class ClienteEntity {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
     private String nome;
     private String email;

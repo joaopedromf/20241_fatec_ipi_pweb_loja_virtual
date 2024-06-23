@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 public class ProdutoEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
     private String nome;
     private String marca;

@@ -73,7 +73,7 @@ export class CadastroComponent {
         },
         (error) => {
           if(error.status === 404){
-            this.mensagem = "Digite um código válido."
+            this.mensagem = "Código não encontrado."
             this.nivelMensagem = 2;
           }
           else{
@@ -109,7 +109,7 @@ export class CadastroComponent {
         },
         (error) => {
           if(error.status === 404){
-            this.mensagem = "Digite um código válido."
+            this.mensagem = "Código não encontrado."
             this.nivelMensagem = 2;
           }
           else{
@@ -120,7 +120,7 @@ export class CadastroComponent {
       );
     }
     else{
-      this.mensagem = "Digite um código válido."
+      this.mensagem = "Código inválido."
       this.nivelMensagem = 2;
     }
   }
@@ -141,7 +141,7 @@ export class CadastroComponent {
         (error) => {
           if(error.status === 404){
             this.limpar();
-            this.mensagem = "Digite um código válido."
+            this.mensagem = "Código não encontrado."
             this.nivelMensagem = 2;
           }
           else{
@@ -154,7 +154,7 @@ export class CadastroComponent {
     }
     else{
       this.limpar();
-      this.mensagem = "Digite um código válido."
+      this.mensagem = "Código inválido."
       this.nivelMensagem = 2;
     }
   }
