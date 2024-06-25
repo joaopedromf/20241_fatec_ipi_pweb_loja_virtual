@@ -51,12 +51,12 @@ export class DetalheComponent {
     itemCesta.nomeProduto = this.obj.nome;
     itemCesta.qtd = 1;
     if(this.obj.valor<=this.obj.valorPromo || this.obj.valorPromo==0){
-      itemCesta.valor = this.obj.valor;
-      itemCesta.total = this.obj.valor;
+      itemCesta.valorUnitario = this.obj.valor;
+      itemCesta.valorTotal = this.obj.valor;
     }
     else{
-      itemCesta.valor = this.obj.valorPromo;
-      itemCesta.total = this.obj.valorPromo;
+      itemCesta.valorUnitario = this.obj.valorPromo;
+      itemCesta.valorTotal = this.obj.valorPromo;
     }
 
     let lista: Item[] = [];
@@ -76,7 +76,7 @@ export class DetalheComponent {
       else{
         if(lista[indice].qtd < 50){
           lista[indice].qtd++;
-          lista[indice].total = lista[indice].valor * lista[indice].qtd;
+          lista[indice].valorTotal = lista[indice].valorUnitario * lista[indice].qtd;
         }
       }
     }

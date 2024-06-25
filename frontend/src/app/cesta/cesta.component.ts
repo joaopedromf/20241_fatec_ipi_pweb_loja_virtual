@@ -26,7 +26,7 @@ export class CestaComponent {
       if(json != null){
         this.lista = JSON.parse(json);
         for(let item of this.lista){
-          this.totalCesta = this.totalCesta + item.total;
+          this.totalCesta = this.totalCesta + item.valorTotal;
         }
       }
     }
@@ -69,7 +69,7 @@ export class CestaComponent {
   public inputVazio(item: Item){
     if(item.qtd == null){
       item.qtd = 1;
-      item.total = item.qtd * item.valor;
+      item.valorTotal = item.qtd * item.valorUnitario;
       localStorage.setItem("cesta", JSON.stringify(this.lista));
     }
     else if(item.qtd == 0){
@@ -89,10 +89,10 @@ export class CestaComponent {
   }
 
   private atualizarTotal(item: Item){
-    item.total = item.qtd * item.valor;
+    item.valorTotal = item.qtd * item.valorUnitario;
     this.totalCesta = 0;
     for(let i of this.lista){
-      this.totalCesta = this.totalCesta + i.total;
+      this.totalCesta = this.totalCesta + i.valorTotal;
     }
   }
 

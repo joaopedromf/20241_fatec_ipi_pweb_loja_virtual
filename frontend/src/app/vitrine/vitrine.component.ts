@@ -50,12 +50,12 @@ export class VitrineComponent {
     itemCesta.nomeProduto = produto.nome;
     itemCesta.qtd = 1;
     if(produto.valor<=produto.valorPromo || produto.valorPromo==0){
-      itemCesta.valor = produto.valor;
-      itemCesta.total = produto.valor;
+      itemCesta.valorUnitario = produto.valor;
+      itemCesta.valorTotal = produto.valor;
     }
     else{
-      itemCesta.valor = produto.valorPromo;
-      itemCesta.total = produto.valorPromo;
+      itemCesta.valorUnitario = produto.valorPromo;
+      itemCesta.valorTotal = produto.valorPromo;
     }
 
     let lista: Item[] = [];
@@ -75,7 +75,7 @@ export class VitrineComponent {
       else{
         if(lista[indice].qtd < 50){
           lista[indice].qtd++;
-          lista[indice].total = lista[indice].valor * lista[indice].qtd;
+          lista[indice].valorTotal = lista[indice].valorUnitario * lista[indice].qtd;
         }
       }
     }

@@ -24,6 +24,17 @@ public class ItemController {
     @Autowired
     ItemRepository repository;
 
+    @GetMapping("/api/pedido/{codigo}/itens")
+    public ResponseEntity<List<ItemEntity>> listar(@PathVariable(name = "codigo") int codigoPedido){
+        List<ItemEntity> itens = repository.findItems(codigoPedido);
+        if(!itens.isEmpty()){
+            return ResponseEntity.ok(itens);
+        }
+        else{
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @GetMapping("/api/item/{codigo}")
     public ResponseEntity<ItemEntity> carregar(@PathVariable int codigo){
         Optional<ItemEntity> obj = repository.findById(codigo);

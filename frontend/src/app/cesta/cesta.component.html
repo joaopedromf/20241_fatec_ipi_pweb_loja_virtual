@@ -20,7 +20,7 @@
                 <tr *ngFor="let item of lista">
                     <td class="cesta-tabela__imagem"><img src="../../assets/produto{{item.codigoProduto}}/{{item.codigoProduto}}.png" alt="Produto"></td>
                     <td class="cesta-tabela__produto">{{item.nomeProduto}}</td>
-                    <td class="cesta-tabela__vl-unitario">R$ {{item.valor | number:'1.2-2':'pt'}}</td>
+                    <td class="cesta-tabela__vl-unitario">R$ {{item.valorUnitario | number:'1.2-2':'pt'}}</td>
                     <td class="cesta-tabela__qtd">
                         <div class="qtd__container">
                             <button class="qtd_diminuir" (click)="diminuirQuantidade(item);"><i class="fa-solid fa-minus"></i></button>
@@ -28,7 +28,7 @@
                             <button class="qtd_aumentar" (click)="aumentarQuantidade(item);"><i class="fa-solid fa-plus"></i></button>
                         </div>
                     </td>
-                    <td class="cesta-tabela__vl-total">R$ {{item.total | number:'1.2-2':'pt'}}</td>
+                    <td class="cesta-tabela__vl-total">R$ {{item.valorTotal | number:'1.2-2':'pt'}}</td>
                     <td class="cesta-tabela__excluir"><button title="Remover" (click)="removerItem(item);"><i class="fa-solid fa-trash-can"></i></button></td>
                 </tr>
             </tbody>
@@ -44,7 +44,7 @@
                         <button class="botao--remover" title="Remover" (click)="removerItem(item);"><i class="fa-solid fa-trash-can"></i></button>
                     </div>
                     <div class="cesta-card__info">
-                        <p class="cesta-card__preco">R$ {{item.valor | number:'1.2-2':'pt'}}</p>
+                        <p class="cesta-card__preco">R$ {{item.valorUnitario | number:'1.2-2':'pt'}}</p>
                         <div class="qtd__container">
                             <button class="qtd_diminuir" (click)="diminuirQuantidade(item);"><i class="fa-solid fa-minus"></i></button>
                             <input [(ngModel)]="item.qtd" (blur)="inputVazio(item);" (ngModelChange)="alterarQuantidade(item);" type="number" class="qtd" name="qtd" value="{{item.qtd}}">
