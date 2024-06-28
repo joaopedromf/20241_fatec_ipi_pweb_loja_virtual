@@ -33,4 +33,8 @@ export class ClienteService {
   public login(obj: Cliente): Observable<Cliente>{
     return this.http.post<Cliente>("http://localhost:8090/api/cliente/login", obj);
   }
+
+  public recuperarSenha(email: String): Observable<Cliente>{
+    return this.http.post<Cliente>("http://localhost:8090/api/cliente/recuperar-senha", email);
+  }
 }

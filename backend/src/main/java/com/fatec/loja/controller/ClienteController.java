@@ -80,4 +80,17 @@ public class ClienteController {
             return ResponseEntity.status(401).build();
         }
     }
+
+    @PostMapping("/api/cliente/recuperar-senha")
+    public ResponseEntity<ClienteEntity> recuperarSenha(@RequestBody String email){
+        Optional<String> senha = repository.recuperarSenha(email);
+        if(senha.isPresent()){
+            ClienteEntity cliente = new ClienteEntity();
+            cliente.setSenha(senha.get());;
+            return ResponseEntity.ok(cliente);
+        }
+        else{
+            return ResponseEntity.status(404).build();
+        }
+    }
 }

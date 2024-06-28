@@ -1,14 +1,18 @@
 <main>
     <div class="container">
         <h1 class="titulo">Esqueci minha senha</h1>
+        <div *ngIf="mensagem!==''" class="alert alert-dismissible alerta" [ngClass]="{'alert-success': nivelMensagem === 1, 'alert-info': nivelMensagem === 2, 'alert-warning': nivelMensagem === 3, 'alert-danger': nivelMensagem === 4}">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="avisoFechado();"></button>
+            <strong><i class="fa-solid fa-circle-info alerta__icone"></i></strong>  {{mensagem}}
+        </div>
         <div class="esqueci__container">
             <form class="esqueci__formulario">
                 <h2 class="esqueci__titulo">Informe o seu e-mail</h2>
                 <div class="esqueci__formulario-campo">
-                    <input type="email" name="email" id="email" required placeholder="">
+                    <input [(ngModel)]="email" type="email" name="email" id="email" required placeholder="">
                     <label for="email">E-mail</label>
                 </div>
-                <button type="submit" class="botao botao--vermelho">Enviar</button>
+                <button type="submit" class="botao botao--vermelho" (click)="recuperarSenha();">Enviar</button>
             </form>
         </div>
     </div>
