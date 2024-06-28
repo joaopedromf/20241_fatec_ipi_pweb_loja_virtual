@@ -4,6 +4,10 @@ import { Item } from '../model/item';
 import { FormsModule } from '@angular/forms';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { Cliente } from '../model/cliente';
+import { Pedido } from '../model/pedido';
+import { PedidoService } from '../service/pedido.service';
+import { ItemService } from '../service/item.service';
 
 registerLocaleData(localePt);
 
@@ -18,8 +22,10 @@ export class CestaComponent {
   public lista: Item[] = [];
   public totalCesta: number = 0;
   public maximo: number = 50;
+  public mensagem: String = "";
+  public nivelMensagem: number = 0;
 
-  constructor(){
+  constructor(private pedidoService: PedidoService, private itemService: ItemService){
     try{
       let json = localStorage.getItem("cesta");
 
@@ -33,12 +39,49 @@ export class CestaComponent {
     catch(e){}
   }
 
-  public alterarQuantidade(item: Item){
-    if(item.qtd < 0){
-      item.qtd = 1;
+  public gravarPedido(){
+    let json = localStorage.getItem("cliente");
+    if(json == null){
+      this.nivelMensagem = 2;
+      this.mensagem = " Você ainda não possui cadastro. Cadastre-se para fechar o pedido."
     }
-    else if(item.qtd > this.maximo){
-      item.qtd = this.maximo;
+    else{
+      let cliente: Cliente = JSON.parse(json);
+      let pedido: Pedido = new Pedido();
+      pedido.codigoCliente = cliente.codigo;
+      pedido.total = this.totalCesta;
+      pedido.status = "Pendente";
+      pedido.entrega = "Normal";
+      pedido.dataPedido = new Date().toISOString().split('T')[0];
+      this.pedidoService.gravar(pedido).subscribe(
+        (data: Pedido) => {
+          this.lista.forEach(item => item.codigoPedido = data.codigo);
+          this.itemService.gravarLista(this.lista).subscribe(
+            (data: Item[]) => {
+              this.nivelMensagem = 1;
+              this.mensagem = "Pedido efetuado com sucesso.";
+              this.limpar();
+            },
+            (error) => {
+              this.nivelMensagem = 4;
+              this.mensagem = "Ocorreu um erro durante a gravação dos itens do pedido."
+            }
+          );
+        },
+        (error) => {
+          this.nivelMensagem = 4;
+          this.mensagem = "Ocorreu um erro durante a gravação do pedido.";
+        }
+      );
+    }
+  }
+
+  public alterarQuantidade(item: Item){
+    if(item.quantidade < 0){
+      item.quantidade = 1;
+    }
+    else if(item.quantidade > this.maximo){
+      item.quantidade = this.maximo;
     }
 
     this.atualizarTotal(item);
@@ -46,20 +89,20 @@ export class CestaComponent {
   }
 
   public aumentarQuantidade(item: Item){
-    if(item.qtd <= this.maximo - 1){
-      item.qtd++;
+    if(item.quantidade <= this.maximo - 1){
+      item.quantidade++;
       this.atualizarTotal(item);
       localStorage.setItem("cesta", JSON.stringify(this.lista));
     }
   }
 
   public diminuirQuantidade(item: Item){
-    if(item.qtd < 2){
+    if(item.quantidade < 2){
       this.atualizarCesta(item);
       this.atualizarTotal(item);
     }
     else{
-      item.qtd--;
+      item.quantidade--;
       this.atualizarTotal(item);
       localStorage.setItem("cesta", JSON.stringify(this.lista));
     }
@@ -67,18 +110,18 @@ export class CestaComponent {
   }
 
   public inputVazio(item: Item){
-    if(item.qtd == null){
-      item.qtd = 1;
-      item.valorTotal = item.qtd * item.valorUnitario;
+    if(item.quantidade == null){
+      item.quantidade = 1;
+      item.valorTotal = item.quantidade * item.valorUnitario;
       localStorage.setItem("cesta", JSON.stringify(this.lista));
     }
-    else if(item.qtd == 0){
+    else if(item.quantidade == 0){
       this.atualizarCesta(item);
     }
   }
 
   public removerItem(item: Item){
-    item.qtd = 0;
+    item.quantidade = 0;
     this.atualizarTotal(item);
     this.atualizarCesta(item);
   }
@@ -89,7 +132,7 @@ export class CestaComponent {
   }
 
   private atualizarTotal(item: Item){
-    item.valorTotal = item.qtd * item.valorUnitario;
+    item.valorTotal = item.quantidade * item.valorUnitario;
     this.totalCesta = 0;
     for(let i of this.lista){
       this.totalCesta = this.totalCesta + i.valorTotal;
@@ -99,5 +142,9 @@ export class CestaComponent {
   limpar(){
     this.lista = [];
     localStorage.removeItem("cesta");
+  }
+
+  public avisoFechado(){
+    this.mensagem = "";
   }
 }

@@ -25,18 +25,8 @@ export class ItemService {
     return mensagem;
   }
 
-  public gravarLista(lista: Item[]): string{
-    let mensagem = "";
-    this.http.post<Item[]>("http://localhost:8090/api/itens", lista).subscribe({
-      next: data => {
-        mensagem = "Registros salvos com sucesso!";
-      },
-      error: error => {
-        console.log(error);
-        mensagem = "Ocorreu um erro durante a gravação!";
-      }
-    });
-    return mensagem;
+  public gravarLista(lista: Item[]): Observable<Item[]>{
+    return this.http.post<Item[]>("http://localhost:8090/api/itens", lista);
   }
 
   public alterar(obj: Item): string{

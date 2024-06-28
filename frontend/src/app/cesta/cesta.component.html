@@ -1,6 +1,10 @@
 <main>
     <div class="container">
         <h1 class="titulo">Cesta de Compras</h1>
+        <div *ngIf="mensagem!==''" class="alert alert-dismissible alerta" [ngClass]="{'alert-success': nivelMensagem === 1, 'alert-info': nivelMensagem === 2, 'alert-warning': nivelMensagem === 3, 'alert-danger': nivelMensagem === 4}">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="avisoFechado();"></button>
+            <strong><i class="fa-solid fa-circle-info alerta__icone"></i></strong>  {{mensagem}}
+        </div>
         <div *ngIf="lista.length<=0" class="vazia">
             <i class="fa-solid fa-circle-xmark"></i>
             <p class="vazia__titulo">A cesta está vazia!</p>
@@ -24,7 +28,7 @@
                     <td class="cesta-tabela__qtd">
                         <div class="qtd__container">
                             <button class="qtd_diminuir" (click)="diminuirQuantidade(item);"><i class="fa-solid fa-minus"></i></button>
-                            <input [(ngModel)]="item.qtd" (blur)="inputVazio(item);" (ngModelChange)="alterarQuantidade(item);" type="number" class="qtd" name="qtd" value="{{item.qtd}}">
+                            <input [(ngModel)]="item.quantidade" (blur)="inputVazio(item);" (ngModelChange)="alterarQuantidade(item);" type="number" class="qtd" name="qtd" value="{{item.quantidade}}">
                             <button class="qtd_aumentar" (click)="aumentarQuantidade(item);"><i class="fa-solid fa-plus"></i></button>
                         </div>
                     </td>
@@ -47,7 +51,7 @@
                         <p class="cesta-card__preco">R$ {{item.valorUnitario | number:'1.2-2':'pt'}}</p>
                         <div class="qtd__container">
                             <button class="qtd_diminuir" (click)="diminuirQuantidade(item);"><i class="fa-solid fa-minus"></i></button>
-                            <input [(ngModel)]="item.qtd" (blur)="inputVazio(item);" (ngModelChange)="alterarQuantidade(item);" type="number" class="qtd" name="qtd" value="{{item.qtd}}">
+                            <input [(ngModel)]="item.quantidade" (blur)="inputVazio(item);" (ngModelChange)="alterarQuantidade(item);" type="number" class="qtd" name="qtd" value="{{item.quantidade}}">
                             <button class="qtd_aumentar" (click)="aumentarQuantidade(item);"><i class="fa-solid fa-plus"></i></button>
                         </div>
                     </div>
@@ -63,7 +67,7 @@
                     <p class="cesta-botoes__escrito">Total</p>
                     <p class="cesta-botoes__total">R$ {{totalCesta | number:'1.2-2':'pt'}}</p>
                 </div>
-                <button class="botao botao--vermelho botao--pedido">Fechar pedido</button>
+                <button class="botao botao--vermelho botao--pedido" (click)="gravarPedido();">Fechar pedido</button>
             </div>
         </div>
 

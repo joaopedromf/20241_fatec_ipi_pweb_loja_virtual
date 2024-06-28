@@ -5,6 +5,6 @@ export class Item {
     public codigoPedido: number = 0;
     public nomeProduto: string = "";
     public valorUnitario: number=0;
-    public qtd: number=1;
+    public quantidade: number=1;
     public valorTotal: number=0;
 }
